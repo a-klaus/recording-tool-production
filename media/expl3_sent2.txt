@@ -1,0 +1,5 @@
+Insgesamt müssen 400 Sätze vorgelesen werden. In der Seitenleiste (wieder über
+die Pfeile in der Ecke oben links erreichbar) kann
+über ein Auswahlfeld zu einem bestimmten Satz
+gesprungen werden. Außerdem ist dort ersichtlich, für welche Sätze schon Aufnahmen
+vorhanden sind und welche noch fehlen.

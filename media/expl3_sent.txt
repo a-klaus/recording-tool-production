@@ -1,0 +1,9 @@
+Im Bereich Satzaufnahme sammeln wir einzelne Aufnahmen für vorgelesene
+Sätze. Das Aufnahme-Interface kann über die Navigation aufgerufen werden.
+Der Satz, welcher vorgelesen werden soll, wird Groß angezeigt.
+Darunter befindet sich ein Knopf, mit dem die Aufnahme gestartet und beendet
+werden kann. Die Aufnahme wird dann automatisch gespeichert, und es wird automatisch
+der nächste Satz angezeigt.
+Hier kann diese Funktion für den Beispielsatz "Dies ist ein Test."
+ausprobiert werden (Die Aufnahme wird hier im Tutorial
+jedoch nicht gespeichert, dafür kann sie als Mikrofontest angehört werden):

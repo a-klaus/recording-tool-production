@@ -1,0 +1,4 @@
+Für Satzaufnahme und Bildbeschreibung gibt es einzelne Seiten.
+An der linken Seite des Bildschirmes kann eine Leiste aufgeklappt werden, über
+welche zur Navigation gelangt werden kann. Um die Leiste aufzuklappen oder zu
+schließen, klickt man auf den Doppelpfeil am linken oberen Rand.

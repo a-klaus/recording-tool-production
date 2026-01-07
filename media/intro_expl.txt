@@ -1,0 +1,7 @@
+Mit dieser Anwendung wollen wir Sprache aufzeichnen, um eine
+Dysarthrie-Datensammlung zu erstellen.
+Dafür müssen 400 Sätze vorgelesen werden.
+Außerdem sammeln wir spontane Sprache,
+indem Bilder beschrieben werden.
+Hier wird das Aufnahmeprogramm erklärt.
+

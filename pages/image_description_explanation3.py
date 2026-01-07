@@ -1,0 +1,52 @@
+"""
+Tutorial for sentence recording.
+"""
+
+import os
+
+import streamlit as st
+from streamlit_mic_recorder import mic_recorder
+
+from utils.paths import PAGE_PATHS, PAGE_DICT
+from utils.utils import (
+    log_out,
+)
+
+
+with st.sidebar:
+    st.button("Log out", on_click=log_out)
+    st.divider()
+    page_selection = st.selectbox(
+        "Zu Seite wechseln",
+        [i for i in PAGE_PATHS if (not i.endswith("transcription.py")) or (not st.session_state.transcription_locked)],
+        format_func=lambda x: PAGE_DICT[x]
+    )
+    if st.button("Auswählen"):
+        st.switch_page(page_selection)
+
+
+st.header("Bildbeschreibung")
+
+st.write("Unter dem Bild befindet sich der Knopf für die Aufnahme. Sobald dieser"\
+         " gedrückt wird, startet die Aufnahme. Eventuell muss die Audio-Aufnahme"\
+         " über den Browser erlaubt werden. Um die Aufnahme zu stoppen,"\
+         " muss derselbe Knopf noch einmal gedrückt werden. Die Aufnahme wird"\
+         " dann automatisch gespeichert. Es können mehrere Aufnahmen hintereinander"\
+         " gemacht werden.")
+
+st.image(os.path.join("media", "image_interface3.jpg"))
+
+
+# Buttons for switching between items
+left_column, _, right_column = st.columns(3)
+
+with left_column:
+    if st.button("Vorherige Seite",
+                 use_container_width=True):
+        st.switch_page(os.path.join("pages", "image_description_explanation2.py"))
+
+with right_column:
+    if st.button("Nächste Seite",
+                 use_container_width=True):
+        st.switch_page(os.path.join("pages", "image_description_explanation4.py"))
+

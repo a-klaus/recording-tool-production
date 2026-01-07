@@ -1,0 +1,9 @@
+Neben einzelnen Sätzen wollen wir auch spontane Sprache sammeln. Hierfür
+muss ein Bild beschrieben werden. Das Aufnahme-Interface kann über die Navigation
+aufgerufen werden.
+Anschließend muss zunächst das Bild ausgewählt werden. Wird dieses angezeigt,
+kann die Aufnahme gestartet werden. Dann kann eine (möglichst) Bildbeschreibung
+eingesprochen werden. Dabei kann auch über Aspekte, die nicht direkt im Bild
+sichtbar sind, gesprochen werden, etwa Mutmaßungen, was die dargestellten Personen
+sagen oder denken könnten, oder was ihre Pläne sind. Wichtig ist, dass viel erzählt wird.
+In der Seitenleiste kann zwischen den vorhandenen Bildern gewechselt werden.
