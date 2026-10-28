@@ -2,7 +2,7 @@
 
 This is a streamlit-based recording tool for the collection of sentence recordings and spontaneous discourse.
 
-CURRENTLY IN PRODUCTION
+CURRENTLY IN PRODUCTION – THIS IS FOR MY PRIVATE TESTS AT THE MOMENT.
 
 ## Installation
 
