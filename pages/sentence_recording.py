@@ -12,7 +12,7 @@ from utils.paths import PAGE_PATHS, PAGE_DICT
 from utils.utils import (
     save_audio_sent,
     file_exists,
-    log_out,
+    # log_out,
 )
 
 
@@ -32,7 +32,7 @@ def update_index(modif):
 
 # Sidebar to allow jumping to specific item
 with st.sidebar:
-    st.button("Log out", on_click=log_out)
+    st.session_state.authenticator.logout()
     st.divider()
     page_selection = st.selectbox(
         "Zu Seite wechseln",

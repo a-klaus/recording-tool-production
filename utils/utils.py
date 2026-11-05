@@ -69,35 +69,19 @@ def setup_transcription_recording_variables():
         st.session_state.transcription_locked = True
         st.session_state.spont_file_dict = {}
         st.session_state.spont_file_index = 1
-        # else:
-        #     # Create new dict
-        #     st.session_state.spont_file_dict = {
-        #         c+1: {"path": filename, "done": 0, "text": ""}
-        #         for c, filename in enumerate(audio_files)
-        #     }
-        #
-        #     missing_audio_files = set(audio_files) - {v["path"] for v in st.session_state.spont_file_dict.values()}
-        #     final_item = sorted(list(st.session_state.spont_file_dict.keys()))[-1]
-        #     c_range = range(final_item, final_item + len(missing_audio_files))
-        #     for c, filename in zip(c_range, missing_audio_files):
-        #         st.session_state.spont_file_dict[c+1] = {"path": filename, "done": 0, "text": ""} 
 
 
 def log_in(user_id):
     """Generic login check"""
-    if user_id:
-        os.makedirs(f"{user_id}_recordings", exist_ok=True)
-        st.session_state.output_dir = f"{user_id}_recordings"
-        # Get items from folder
-        setup_sentence_recording_variables()
-        setup_transcription_recording_variables()
-        setup_spont_recording_variables()
+    # if user_id:
+    out_dir = f"../{user_id}_recordings"
+    os.makedirs(out_dir, exist_ok=True)
+    st.session_state.output_dir = out_dir
+    # Get items from folder
+    setup_sentence_recording_variables()
+    setup_transcription_recording_variables()
+    setup_spont_recording_variables()
 
-        st.session_state.logged_in = True
-        st.rerun()
-    else:
-        st.session_state.login_hint = "Hier Nutzer-ID eingeben!"
-        st.rerun()
 
 def log_out():
     st.session_state.logged_in = False

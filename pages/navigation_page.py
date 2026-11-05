@@ -8,11 +8,11 @@ import streamlit as st
 from streamlit_mic_recorder import mic_recorder
 
 from utils.paths import PAGE_PATHS, PAGE_DICT
-from utils.utils import log_out, file_exists, get_audio_files
+from utils.utils import file_exists, get_audio_files
 
 
 with st.sidebar:
-    st.button("Log out", on_click=log_out)
+    st.session_state.authenticator.logout()
     st.divider()
     page_selection = st.selectbox(
         "Zu Seite wechseln",
@@ -25,6 +25,7 @@ with st.sidebar:
 
 st.header("Startseite", divider=True)
 
+st.write(f'Willkommen, *{st.session_state.get("name")}*')
 st.write("Im Aufnahme-Tool findest du eine Seite für die Aufnahme von"\
          " vorgelesenen Sätzen sowie spontaner Sprache."\
          # "Außerdem gibt es einen Bereich"\

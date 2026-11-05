@@ -8,13 +8,10 @@ import streamlit as st
 from streamlit_mic_recorder import mic_recorder
 
 from utils.paths import PAGE_PATHS, PAGE_DICT
-from utils.utils import (
-    log_out,
-)
 
 
 with st.sidebar:
-    st.button("Log out", on_click=log_out)
+    st.session_state.authenticator.logout()
     st.divider()
     page_selection = st.selectbox(
         "Zu Seite wechseln",
