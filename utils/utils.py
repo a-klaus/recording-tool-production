@@ -15,18 +15,10 @@ from utils.paths import LABEL_DIR, PROMPT_DIR
 def setup_sentence_recording_variables():
     st.session_state.sentence_items = load_labels(LABEL_DIR)
     st.session_state.prompt_items = load_labels(PROMPT_DIR)
-    st.session_state.item_index = 0
-    for c, item in st.session_state.sentence_items.items():
-        if not item["done"]:
-            st.session_state.item_index = c
-            break
-
-    # Initialize import variables
-    if not "item_index" in st.session_state:
-        st.session_state.item_index = 0
 
     if not "final_items" in st.session_state:
         st.session_state.final_items = len(st.session_state.sentence_items) - 1
+    # TODO that here needed? How often is this done?
 
 def setup_spont_recording_variables():
     # Sort out state vars
