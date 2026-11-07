@@ -9,11 +9,24 @@ import streamlit as st
 from streamlit_mic_recorder import mic_recorder
 
 from utils.paths import PAGE_PATHS, PAGE_DICT
+from utils.state_item_provider import get_authenticator
+
+
+if not "authenticator" in st.session_state:
+    st.session_state.authenticator = get_authenticator()
 from utils.utils import (
     save_audio_sent,
     file_exists,
 )
 
+from utils.state_item_provider import get_authenticator, SentenceItems
+
+
+if not "authenticator" in st.session_state:
+    st.session_state.authenticator = get_authenticator()
+
+if not "sentence_items" in st.session_state:
+    st.session_state.sentence_items = SentenceItems(st.session_state["username"], "labels")
 
 # Set up idx for session state
 if "idx" not in st.session_state:
@@ -35,7 +48,7 @@ def callback():
     filename = st.session_state.sentence_items[st.session_state.idx]["filename"]
     if st.session_state.my_recorder_output:
         audio_bytes = st.session_state.my_recorder_output["bytes"]
-        save_audio_sent(st.session_state.output_dir, filename, audio_bytes)
+        save_audio_sent(st.session_state.sentence_items.out_dir, filename, audio_bytes)
         st.session_state.sentence_items[st.session_state.idx]["done"] = 1
         # Rerun to get to the next sentence
         if auto_skip:
@@ -111,7 +124,7 @@ mic_recorder(
 st.divider()
 
 # Info about item:
-st.write(f'Satz {st.session_state.idx+1}/{st.session_state.final_items+1}{" - Aufnahme existiert" if st.session_state.sentence_items[st.session_state.idx]["done"] else ""}')
+st.write(f'Satz {st.session_state.idx+1}/{len(st.session_state.sentence_items)}{" - Aufnahme existiert" if st.session_state.sentence_items[st.session_state.idx]["done"] else ""}')
 
 # Display sentence to be read
 st.header(f'{st.session_state.sentence_items[st.session_state.idx]["text"]}')
@@ -121,6 +134,6 @@ st.divider()
 
 # Optionally display existing audio
 if display_audio:
-    if file_exists(st.session_state.output_dir, st.session_state.sentence_items[st.session_state.item_index]["filename"]):
-        st.audio(os.path.join(st.session_state.output_dir, st.session_state.sentence_items[st.session_state.item_index]["filename"].replace(".txt", ".wav")))
+    if file_exists(st.session_state.sentence_items.out_dir, st.session_state.sentence_items[st.session_state.item_index]["filename"]):
+        st.audio(os.path.join(st.session_state.sentence_items.out_dir, st.session_state.sentence_items[st.session_state.item_index]["filename"].replace(".txt", ".wav")))
 

@@ -8,6 +8,11 @@ import streamlit as st
 from streamlit_mic_recorder import mic_recorder
 
 from utils.paths import PAGE_PATHS, PAGE_DICT
+from utils.state_item_provider import get_authenticator
+
+
+if not "authenticator" in st.session_state:
+    st.session_state.authenticator = get_authenticator()
 
 
 with st.sidebar:

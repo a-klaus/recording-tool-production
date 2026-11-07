@@ -4,26 +4,34 @@ A simple first version for a streamlit recording tool
 
 import os
 import streamlit as st
-import streamlit_authenticator as stauth
-import yaml
-from yaml.loader import SafeLoader
-from utils.utils import log_in
+# import streamlit_authenticator as stauth
 
+from utils.state_item_provider import get_authenticator
 
-with open('../config.yaml') as file:
-    config = yaml.load(file, Loader=SafeLoader)
-
-
-# Pre-hashing all plain text passwords once
-# stauth.Hasher.hash_passwords(config['credentials'])
 
 if not "authenticator" in st.session_state:
-    st.session_state.authenticator = stauth.Authenticate(
-        config['credentials'],
-        config['cookie']['name'],
-        config['cookie']['key'],
-        config['cookie']['expiry_days']
-    )
+    st.session_state.authenticator = get_authenticator()
+
+
+# import yaml
+# from yaml.loader import SafeLoader
+# from utils.utils import log_in
+#
+#
+# with open('../config.yaml') as file:
+#     config = yaml.load(file, Loader=SafeLoader)
+#
+#
+# # Pre-hashing all plain text passwords once
+# # stauth.Hasher.hash_passwords(config['credentials'])
+#
+# if not "authenticator" in st.session_state:
+#     st.session_state.authenticator = stauth.Authenticate(
+#         config['credentials'],
+#         config['cookie']['name'],
+#         config['cookie']['key'],
+#         config['cookie']['expiry_days']
+#     )
 
 
 # Login widget
@@ -34,7 +42,7 @@ except Exception as e:
 
 # Greet user
 if st.session_state.get('authentication_status'):
-    log_in(st.session_state["username"])
+    # log_in(st.session_state["username"])
     pg = st.navigation([st.Page(os.path.join("pages", "navigation_page.py")),
                         st.Page(os.path.join("pages", "explanation.py")),
                         st.Page(os.path.join("pages", "image_description.py")),
